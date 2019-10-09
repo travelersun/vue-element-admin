@@ -1,8 +1,9 @@
 import request from '@/utils/request'
+import requestFnd from '@/utils/requestFnd'
 
 export function getRoutes() {
-  return request({
-    url: '/routes',
+  return requestFnd({
+    url: '/user/routes',
     method: 'get'
   })
 }

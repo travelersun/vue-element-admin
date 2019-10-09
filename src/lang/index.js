@@ -49,6 +49,10 @@ const i18n = new VueI18n({
   // options: en | zh | es
   locale: getLanguage(),
   // set locale messages
+  missing: function(locale, key, vm) {
+    return key
+  },
+  silentTranslationWarn: true,
   messages
 })
 

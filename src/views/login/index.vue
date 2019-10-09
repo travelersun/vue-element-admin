@@ -141,6 +141,7 @@ export default {
     } else if (this.loginForm.password === '') {
       this.$refs.password.focus()
     }
+    this.handleLogin()
   },
   destroyed() {
     // window.removeEventListener('storage', this.afterQRScan)
@@ -275,6 +276,7 @@ $light_gray:#eee;
   overflow: hidden;
 
   .login-form {
+    display: none;
     position: relative;
     width: 520px;
     max-width: 100%;

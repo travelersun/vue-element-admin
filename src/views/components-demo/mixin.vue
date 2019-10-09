@@ -12,27 +12,27 @@
             </router-link>
           </el-col>
           <el-col :span="4" class="text-center">
-            <router-link class="pan-btn light-blue-btn" to="/icon/index">
+            <router-link class="pan-btn light-blue-btn" to="icon/index">
               Icons
             </router-link>
           </el-col>
           <el-col :span="4" class="text-center">
-            <router-link class="pan-btn pink-btn" to="/excel/export-excel">
+            <router-link class="pan-btn pink-btn" to="excel/export-excel">
               Excel
             </router-link>
           </el-col>
           <el-col :span="4" class="text-center">
-            <router-link class="pan-btn green-btn" to="/table/complex-table">
+            <router-link class="pan-btn green-btn" to="table/complex-table">
               Table
             </router-link>
           </el-col>
           <el-col :span="4" class="text-center">
-            <router-link class="pan-btn tiffany-btn" to="/example/create">
+            <router-link class="pan-btn tiffany-btn" to="example/create">
               Form
             </router-link>
           </el-col>
           <el-col :span="4" class="text-center">
-            <router-link class="pan-btn yellow-btn" to="/theme/index">
+            <router-link class="pan-btn yellow-btn" to="theme/index">
               Theme
             </router-link>
           </el-col>

@@ -72,11 +72,11 @@ export const constantRoutes = [
   }
 ]
 
-export const asyncRoutes = [
+export const asyncRoutesChild = [
   {
-    path: '/permission',
+    path: 'permission',
     component: 'layout/Layout',
-    redirect: '/permission/index',
+    redirect: 'permission/index',
     alwaysShow: true,
     meta: {
       title: 'permission',
@@ -114,7 +114,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/icon',
+    path: 'icon',
     component: 'layout/Layout',
     children: [
       {
@@ -127,7 +127,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/components',
+    path: 'components',
     component: 'layout/Layout',
     redirect: 'noRedirect',
     name: 'ComponentDemo',
@@ -223,7 +223,7 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/charts',
+    path: 'charts',
     component: 'layout/Layout',
     redirect: 'noRedirect',
     name: 'Charts',
@@ -246,16 +246,16 @@ export const asyncRoutes = [
       },
       {
         path: 'mixchart',
-        component: 'views/charts/mixChart',
+        component: 'views/charts/mix-chart',
         name: 'MixChart',
         meta: { title: 'mixChart', noCache: true }
       }
     ]
   },
   {
-    path: '/nested',
+    path: 'nested',
     component: 'layout/Layout',
-    redirect: '/nested/menu1/menu1-1',
+    redirect: 'nested/menu1/menu1-1',
     name: 'Nested',
     meta: {
       title: 'nested',
@@ -267,7 +267,7 @@ export const asyncRoutes = [
         component: 'views/nested/menu1/index',
         name: 'Menu1',
         meta: { title: 'menu1' },
-        redirect: '/nested/menu1/menu1-1',
+        redirect: 'nested/menu1/menu1-1',
         children: [
           {
             path: 'menu1-1',
@@ -279,7 +279,7 @@ export const asyncRoutes = [
             path: 'menu1-2',
             component: 'views/nested/menu1/menu1-2',
             name: 'Menu1-2',
-            redirect: '/nested/menu1/menu1-2/menu1-2-1',
+            redirect: 'nested/menu1/menu1-2/menu1-2-1',
             meta: { title: 'menu1-2' },
             children: [
               {
@@ -314,9 +314,9 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/example',
+    path: 'example',
     component: 'layout/Layout',
-    redirect: '/example/list',
+    redirect: 'example/list',
     name: 'Example',
     meta: {
       title: 'example',
@@ -346,7 +346,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/tab',
+    path: 'tab',
     component: 'layout/Layout',
     children: [
       {
@@ -359,7 +359,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/error',
+    path: 'error',
     component: 'layout/Layout',
     redirect: 'noRedirect',
     name: 'ErrorPages',
@@ -384,7 +384,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/error-log',
+    path: 'error-log',
     component: 'layout/Layout',
     redirect: 'noRedirect',
     children: [
@@ -398,9 +398,9 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/excel',
+    path: 'excel',
     component: 'layout/Layout',
-    redirect: '/excel/export-excel',
+    redirect: 'excel/export-excel',
     name: 'Excel',
     meta: {
       title: 'excel',
@@ -435,9 +435,9 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/zip',
+    path: 'zip',
     component: 'layout/Layout',
-    redirect: '/zip/download',
+    redirect: 'zip/download',
     alwaysShow: true,
     meta: { title: 'zip', icon: 'zip' },
     children: [
@@ -451,9 +451,9 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/pdf',
+    path: 'pdf',
     component: 'layout/Layout',
-    redirect: '/pdf/index',
+    redirect: 'pdf/index',
     children: [
       {
         path: 'index',
@@ -464,13 +464,13 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/pdf/download',
+    path: 'pdf/download',
     component: 'views/pdf/download',
     hidden: true
   },
 
   {
-    path: '/theme',
+    path: 'theme',
     component: 'layout/Layout',
     redirect: 'noRedirect',
     children: [
@@ -484,7 +484,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/clipboard',
+    path: 'clipboard',
     component: 'layout/Layout',
     redirect: 'noRedirect',
     children: [
@@ -498,7 +498,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/i18n',
+    path: 'i18n',
     component: 'layout/Layout',
     children: [
       {
@@ -513,13 +513,77 @@ export const asyncRoutes = [
   {
     path: 'external-link',
     component: 'layout/Layout',
+    redirect: 'uaa',
+    meta: { title: 'externalLink', icon: 'link' },
     children: [
       {
         path: 'https://github.com/PanJiaChen/vue-element-admin',
+        type: 'wwwlink',
+        meta: { title: 'externalLink', icon: 'link' }
+      },
+      {
+        path: 'uaa',
+        type: 'wwwlink',
         meta: { title: 'externalLink', icon: 'link' }
       }
     ]
-  },
-
-  { path: '*', redirect: '/404', hidden: true }
+  }
+  // ,{ path: '*', redirect: '/404', hidden: true }
 ]
+
+export const asyncRoutes = [
+  {
+    path: '/app',
+    component: 'topmenu/Topmenu',
+    // redirect: '/icon/index',
+    meta: { title: 'app', icon: 'link' },
+    children: [
+      {
+        path: 'icon',
+        component: 'layout/Layout',
+        children: [
+          {
+            path: 'index',
+            component: 'views/icons/index',
+            name: 'Icons2',
+            meta: { title: 'icons', icon: 'icon', noCache: true }
+          }
+        ]
+      },
+      {
+        path: 'i18n',
+        component: 'layout/Layout',
+        children: [
+          {
+            path: 'index',
+            component: 'views/i18n-demo/index',
+            name: 'I18n2',
+            meta: { title: 'i18n', icon: 'international' }
+          }
+        ]
+      },
+      {
+        path: 'clipboard',
+        component: 'layout/Layout',
+        redirect: 'noRedirect',
+        children: [
+          {
+            path: 'index',
+            component: 'views/clipboard/index',
+            name: 'ClipboardDemo2',
+            meta: { title: 'clipboardDemo', icon: 'clipboard' }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    path: '/app2',
+    component: 'topmenu/Topmenu',
+    redirect: 'icon/index',
+    meta: { title: 'app2', icon: 'link' },
+    children: asyncRoutesChild
+  }
+]
+
+// export const asyncRoutes = asyncRoutesChild

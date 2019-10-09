@@ -68,17 +68,17 @@ export default [
         data: info
       }
     }
-  },
+  }
 
   // user logout
-  {
-    url: '/user/logout',
-    type: 'post',
-    response: _ => {
-      return {
-        code: 20000,
-        data: 'success'
-      }
-    }
-  }
+  // {
+  //   url: '/user/logout',
+  //   type: 'post',
+  //   response: _ => {
+  //     return {
+  //       code: 20000,
+  //       data: 'success'
+  //     }
+  //   }
+  // }
 ]

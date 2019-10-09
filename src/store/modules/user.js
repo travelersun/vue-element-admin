@@ -1,4 +1,4 @@
-import { login, logout, getInfo } from '@/api/user'
+import { logout, getInfo, logoutUaa } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
 
@@ -31,12 +31,23 @@ const mutations = {
 const actions = {
   // user login
   login({ commit }, userInfo) {
-    const { username, password } = userInfo
+    // const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(response => {
+      getInfo().then(response => {
         const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
+
+        if (!data) {
+          reject('Verification failed, please Login again.')
+        }
+
+        const { roles } = data
+
+        // roles must be a non-empty array
+        if (!roles || roles.length <= 0) {
+          reject('getInfo: roles must be a non-null array!')
+        }
+        commit('SET_TOKEN', roles[0] + '-token')
+        setToken(roles[0] + '-token')
         resolve()
       }).catch(error => {
         reject(error)
@@ -61,9 +72,15 @@ const actions = {
           reject('getInfo: roles must be a non-null array!')
         }
 
+        let defaultAvatar = avatar
+
+        if (!avatar) {
+          defaultAvatar = 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
+        }
+
         commit('SET_ROLES', roles)
         commit('SET_NAME', name)
-        commit('SET_AVATAR', avatar)
+        commit('SET_AVATAR', defaultAvatar)
         commit('SET_INTRODUCTION', introduction)
         resolve(data)
       }).catch(error => {
@@ -75,12 +92,17 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
-        commit('SET_TOKEN', '')
-        commit('SET_ROLES', [])
-        removeToken()
-        resetRouter()
-        resolve()
+      logoutUaa(state.token).then(() => {
+        logout(state.token).then(() => {
+          commit('SET_TOKEN', '')
+          commit('SET_ROLES', [])
+          removeToken()
+          window.location = '/index'
+          // resetRouter()
+          // resolve()
+        }).catch(error => {
+          reject(error)
+        })
       }).catch(error => {
         reject(error)
       })

@@ -9,7 +9,7 @@
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
     "preview": "node build/index.js --preview",
-    "lint": "eslint --ext .js,.vue src",
+    "lint": "eslint --fix --ext .js,.vue src",
     "test:unit": "jest --clearCache && vue-cli-service test:unit",
     "test:ci": "npm run lint && npm run test:unit",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
@@ -43,13 +43,13 @@
     "url": "https://github.com/PanJiaChen/vue-element-admin/issues"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "^0.19.0",
     "clipboard": "2.0.4",
     "codemirror": "5.45.0",
     "driver.js": "0.9.5",
     "dropzone": "5.5.1",
     "echarts": "4.2.1",
-    "element-ui": "2.7.0",
+    "element-ui": "^2.12.0",
     "file-saver": "2.0.1",
     "fuse.js": "3.4.4",
     "js-cookie": "2.2.0",
@@ -69,6 +69,12 @@
     "vue-splitpane": "1.0.4",
     "vuedraggable": "2.20.0",
     "vuex": "3.1.0",
+    "vxe-ajax": "^1.6.0",
+    "vxe-table": "^1.15.0",
+    "vxe-table-plugin-element": "^1.4.3",
+    "vxe-utils": "^1.7.2",
+    "xe-ajax": "^3.6.0",
+    "xe-utils": "^2.2.8",
     "xlsx": "0.14.1"
   },
   "devDependencies": {
